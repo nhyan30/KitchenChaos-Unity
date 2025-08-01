@@ -134,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6092895655270959795, guid: 071cde3942d8de840b43af30bf5d1f2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.61
+      value: -1.4827728
       objectReference: {fileID: 0}
     - target: {fileID: 6092895655270959795, guid: 071cde3942d8de840b43af30bf5d1f2f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6092895655270959795, guid: 071cde3942d8de840b43af30bf5d1f2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.6800084
+      value: 2.6800086
       objectReference: {fileID: 0}
     - target: {fileID: 6092895655270959795, guid: 071cde3942d8de840b43af30bf5d1f2f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -176,6 +176,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClearCounter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6928929626494836735, guid: 071cde3942d8de840b43af30bf5d1f2f, type: 3}
+      propertyPath: tomatoPrefab
+      value: 
+      objectReference: {fileID: 2875629209381597738, guid: f3b23e66a5a0cf841b09ceb684fcc6d2, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
