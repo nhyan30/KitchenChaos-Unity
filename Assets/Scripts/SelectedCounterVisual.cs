@@ -1,22 +1,25 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class CounterSelectedVisual : MonoBehaviour
 {
-    [SerializeField] Material normalMaterial;
-    [SerializeField] Material actvivatedMaterial;
-    [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] MeshRenderer[] meshRenderers;
+    [SerializeField] private Color emissionColor = new Color(0.3f, 0.3f, 0.3f); // Light gray
 
-    [SerializeField] private ClearCounter clearCounter;
-    [SerializeField] private GameObject visualGameObject;
+    [SerializeField] private BaseCounter baseCounter;
+    [SerializeField] private GameObject[] visualGameObjectArray;
+
+    private MaterialPropertyBlock propertyBlock;
 
     private void Start()
     {
+        propertyBlock = new MaterialPropertyBlock();
         Player.Instance.OnSelectedCounterChanged += Player_OnSelectedCounterChanged;
     }
 
     private void Player_OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
     {
-        if(e.selectedCounter == clearCounter)
+        if(e.selectedCounter == baseCounter)
         {
             Show();
         }
@@ -28,12 +31,22 @@ public class CounterSelectedVisual : MonoBehaviour
 
     private void Show()
     {
-        meshRenderer.material = actvivatedMaterial;
+        foreach (var meshRenderer in meshRenderers)
+        {
+            meshRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_EmissionColor", emissionColor);
+            meshRenderer.SetPropertyBlock(propertyBlock);
+        }
     }
 
     private void Hide()
     {
-        meshRenderer.material = normalMaterial;
+        foreach (var meshRenderer in meshRenderers)
+        {
+            meshRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_EmissionColor", Color.black);
+            meshRenderer.SetPropertyBlock(propertyBlock);
+        }
 
     }
 }
