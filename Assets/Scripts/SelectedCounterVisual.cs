@@ -47,6 +47,5 @@ public class CounterSelectedVisual : MonoBehaviour
             propertyBlock.SetColor("_EmissionColor", Color.black);
             meshRenderer.SetPropertyBlock(propertyBlock);
         }
-
     }
 }

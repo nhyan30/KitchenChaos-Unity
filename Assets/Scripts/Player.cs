@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IKitchenObjectParent
 {
     public static Player Instance { get; private set; }
-
+    
     public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
@@ -21,10 +24,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
-
+    public UnityEvent OnPlayerDying;
     private void Awake()
     {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError("There is more than one Player instance");
         }
@@ -34,6 +37,15 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private void Start()
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+    }
+
+    private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
+    {
+        if (selectedCounter != null)
+        {
+            selectedCounter.InteractAlternate(this);
+        }
     }
 
     private void Update()
@@ -49,7 +61,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        if(selectedCounter != null)
+        if (selectedCounter != null)
         {
             selectedCounter.Interact(this);
         }
@@ -85,8 +97,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             SetSelectedCounter(null);
         }
     }
-    
-    
+
+
     private void HandleMovements()
     {
         Vector3 inputVector = gameInput.GetMovementVectorNormalized();
@@ -102,7 +114,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
             // Attempt only X movement
             Vector3 moveDirX = new Vector3(inputVector.x, 0, 0).normalized;
-            canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
+            canMove = moveDirX.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
 
             if (canMove)
             {
@@ -112,10 +124,10 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             else
             {
                 // Can't move only on the X
-                
+
                 // Attempt only Z movement
                 Vector3 moveDirZ = new Vector3(0, 0, inputVector.z).normalized;
-                canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
+                canMove = moveDirX.z != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirZ, moveDistance);
 
                 if (canMove)
                 {
@@ -133,7 +145,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
         transform.forward = Vector3.Slerp(transform.forward, inputVector, rotationSpeed * Time.deltaTime);
     }
-    
     private void SetSelectedCounter(BaseCounter selctedCounters)
     {
         this.selectedCounter = selctedCounters;
@@ -168,4 +179,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         return kitchenObject != null;
     }
+
+    // TODO (Not needed - only if the instance is destroyed)
+    // Unsubscribe from the event when the object is destroyed to avoid memory leaks
+
 }

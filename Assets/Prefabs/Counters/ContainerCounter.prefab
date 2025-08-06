@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b43a454ecae5ec419339c5c77cc87d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kitchenObjectSO: {fileID: 11400000, guid: 45d7e550b3a292d47a0a8bfc5a564666, type: 2}
   counterTopPoint: {fileID: 8545909553092801579}
+  kitchenObjectSO: {fileID: 11400000, guid: 45d7e550b3a292d47a0a8bfc5a564666, type: 2}
 --- !u!4 &8545909553092801579 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8332245323964933137, guid: 99f26cb4c46b107478a81a1d14ca6a58, type: 3}
@@ -187,11 +187,13 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9aa3bbbb241f7774c81977a381c480e2, type: 2}
-    m_RemovedComponents:
-    - {fileID: 6289625630049244101, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4176381449458284667}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
 --- !u!1 &810201373994612815 stripped
 GameObject:
@@ -218,6 +220,24 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5850129231471598083, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
   m_PrefabInstance: {fileID: 7441445471739907360}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6409924354365352330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4589716710238282922, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
+  m_PrefabInstance: {fileID: 7441445471739907360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4176381449458284667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6409924354365352330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fd5e7608bbee14ab220f7846965e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  containerCounter: {fileID: 716778673495729440}
 --- !u!4 &6409924354365352331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4589716710238282923, guid: 9a9137fa2b035d34e881701d2c178192, type: 3}
