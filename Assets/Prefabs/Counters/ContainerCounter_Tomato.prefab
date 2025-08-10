@@ -24,8 +24,16 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2624156849331844523, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9e26e479ab569c7478996ab17b5c40c5, type: 2}
     - target: {fileID: 2768525604003486266, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
       propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4270758276844286767}
+    - target: {fileID: 2768525604003486266, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 4270758276844286767}
     - target: {fileID: 5887735083490744969, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}

@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: kitchenObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: 9fe636b9645aa714ba558ade92835bc9, type: 2}
+    - target: {fileID: 2624156849331844523, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1b8b36515daa84e4d9d0018875bf190b, type: 2}
+    - target: {fileID: 2768525604003486266, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 4692831428593119781}
     - target: {fileID: 3332877249152805200, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -69,3 +77,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+--- !u!212 &4692831428593119781 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2624156849331844523, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+  m_PrefabInstance: {fileID: 7298832592034449294}
+  m_PrefabAsset: {fileID: 0}

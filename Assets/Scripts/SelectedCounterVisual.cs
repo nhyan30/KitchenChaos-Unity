@@ -4,10 +4,10 @@ using UnityEngine;
 public class CounterSelectedVisual : MonoBehaviour
 {
     [SerializeField] MeshRenderer[] meshRenderers;
-    [SerializeField] private Color emissionColor = new Color(0.3f, 0.3f, 0.3f); // Light gray
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] private Color emissionColor = new Color(1.3f, 1.3f, 1.3f); // Light gray
 
     [SerializeField] private BaseCounter baseCounter;
-    [SerializeField] private GameObject[] visualGameObjectArray;
 
     private MaterialPropertyBlock propertyBlock;
 
@@ -37,6 +37,13 @@ public class CounterSelectedVisual : MonoBehaviour
             propertyBlock.SetColor("_EmissionColor", emissionColor);
             meshRenderer.SetPropertyBlock(propertyBlock);
         }
+
+        if(spriteRenderer != null)
+        {
+            spriteRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_EmissionColor", emissionColor);
+            spriteRenderer.SetPropertyBlock(propertyBlock);
+        }
     }
 
     private void Hide()
@@ -46,6 +53,13 @@ public class CounterSelectedVisual : MonoBehaviour
             meshRenderer.GetPropertyBlock(propertyBlock);
             propertyBlock.SetColor("_EmissionColor", Color.black);
             meshRenderer.SetPropertyBlock(propertyBlock);
+        }
+
+        if(spriteRenderer != null)
+        {
+            spriteRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetColor("_EmissionColor", Color.black);
+            spriteRenderer.SetPropertyBlock(propertyBlock);
         }
     }
 }

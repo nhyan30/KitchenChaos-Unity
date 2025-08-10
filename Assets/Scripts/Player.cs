@@ -24,7 +24,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
-    public UnityEvent OnPlayerDying;
     private void Awake()
     {
         if (Instance != null)
@@ -115,7 +114,6 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             // Attempt only X movement
             Vector3 moveDirX = new Vector3(inputVector.x, 0, 0).normalized;
             canMove = moveDirX.x != 0 && !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, moveDirX, moveDistance);
-
             if (canMove)
             {
                 // Can move only on the X

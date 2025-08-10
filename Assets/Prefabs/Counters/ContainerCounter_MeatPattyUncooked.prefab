@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
+    - target: {fileID: 2624156849331844523, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b45edf1fec29e8f4a81141d7238e5017, type: 2}
+    - target: {fileID: 2768525604003486266, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 6996727594135167055}
     - target: {fileID: 5887735083490744969, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -65,3 +73,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+--- !u!212 &6996727594135167055 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2624156849331844523, guid: bb84f30c26974bb4a95ecb84a962ef0e, type: 3}
+  m_PrefabInstance: {fileID: 5004552988208698852}
+  m_PrefabAsset: {fileID: 0}
