@@ -32,11 +32,10 @@ public class CuttingCounter : BaseCounter, IHasProgress
                         progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
                     });
                 }
-                // Player is carrying something
             }
             else
             {
-                // Player not carrying anything
+                // Player not carrying anything 
             }
         }
         else // Counter is not Empty
@@ -44,11 +43,19 @@ public class CuttingCounter : BaseCounter, IHasProgress
             // There is KitchenObject here 
             if (player.HasKitchenObject())
             {
-                //Player is carrying somthing
+                // Player is carrying something
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
+                    // Player is holding a Plate
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+                    }
+                }
             }
             else
             {
-                //Player not carrying somthing
+                //Player not carrying something
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }

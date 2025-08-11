@@ -132,7 +132,6 @@ public class StoveCounter : BaseCounter, IHasProgress
                         progressNormalized = fryingTimer / fryingRecipeSO.fryingTimerMax
                     });
                 }
-                // Player is carrying something
             }
             else
             {
@@ -144,11 +143,32 @@ public class StoveCounter : BaseCounter, IHasProgress
             // There is KitchenObject here 
             if (player.HasKitchenObject())
             {
-                //Player is carrying somthing
+                //Player is carrying something
+                if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+                {
+                    // Player is holding a Plate
+                    if (plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO()))
+                    {
+                        GetKitchenObject().DestroySelf();
+
+                        state = State.Idle;
+
+                        // fire the Event ,passes the state
+                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        {
+                            state = state
+                        });
+
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
+                        });
+                    }
+                }
             }
             else
             {
-                //Player not carrying somthing
+                //Player not carrying something
                 GetKitchenObject().SetKitchenObjectParent(player);
 
                 state = State.Idle;
@@ -157,6 +177,11 @@ public class StoveCounter : BaseCounter, IHasProgress
                 OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
                 {
                     state = state
+                });
+
+                OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                {
+                    progressNormalized = 0f
                 });
             }
         }

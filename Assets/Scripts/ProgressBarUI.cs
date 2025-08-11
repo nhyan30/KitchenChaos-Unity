@@ -31,10 +31,11 @@ public class ProgressBarUI : MonoBehaviour
 
         if (e.progressNormalized == 0f || e.progressNormalized == 1.0f)
         {
-            if (e.progressNormalized == 1.0)
-            {
-                StartCoroutine(BarCompleted());
-            }
+            Hide();
+            //if (e.progressNormalized == 1.0)
+            //{
+            //    StartCoroutine(BarCompleted());
+            //}
         }
         else
         {
