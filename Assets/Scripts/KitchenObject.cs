@@ -19,7 +19,7 @@ public class KitchenObject : MonoBehaviour
         }
 
         this.kitchenObjectParent = kitchenObjectParent;
-        
+
         if (kitchenObjectParent.HasKitchenObject())
         {
             Debug.LogError("IKitchenObjectParent has already a KitchenObject!");
@@ -29,6 +29,7 @@ public class KitchenObject : MonoBehaviour
 
         transform.parent = kitchenObjectParent.GetKitchechenObjectFollowTransform();
         transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
 
     public IKitchenObjectParent GetKitchenObjectParent()
@@ -45,7 +46,7 @@ public class KitchenObject : MonoBehaviour
 
     public bool TryGetPlate(out PlateKitchenObject plateKitchenObject)
     {
-        if(this is PlateKitchenObject)
+        if (this is PlateKitchenObject)
         {
             plateKitchenObject = this as PlateKitchenObject;
             return true;

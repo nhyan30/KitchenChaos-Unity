@@ -15,7 +15,7 @@ public class ProgressBarUI : MonoBehaviour
     private void Start()
     {
         hasProgress = hasProgressGameObject.GetComponent<IHasProgress>();
-        if(hasProgress == null)
+        if (hasProgress == null)
         {
             Debug.LogError("Game object " + hasProgressGameObject + " does not have a component that implements IHasProgress!");
         }
@@ -29,18 +29,11 @@ public class ProgressBarUI : MonoBehaviour
     {
         barImage.fillAmount = e.progressNormalized;
 
-        if (e.progressNormalized == 0f || e.progressNormalized == 1.0f)
-        {
+        // Debug.Log(e.progressNormalized);
+        if (e.progressNormalized == 0f || e.progressNormalized >= 1.0f)
             Hide();
-            //if (e.progressNormalized == 1.0)
-            //{
-            //    StartCoroutine(BarCompleted());
-            //}
-        }
         else
-        {
             Show();
-        }
     }
 
     private void Show()
@@ -51,12 +44,6 @@ public class ProgressBarUI : MonoBehaviour
     private void Hide()
     {
         gameObject.SetActive(false);
-    }
-
-    private IEnumerator BarCompleted()
-    {
-        yield return new WaitForSeconds(0.4f);
-        Hide();
     }
 }
 
