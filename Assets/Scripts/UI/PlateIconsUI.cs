@@ -33,6 +33,6 @@ public class PlateIconsUI : MonoBehaviour
             iconTransfrom.gameObject.SetActive(true);
             iconTransfrom.GetComponent<PlateIconSingleUI>().SetKitchenObjectSO(kitchenObjectSO);
         }
-        Debug.Log(iconTemplate.name);
+        //Debug.Log(iconTemplate.name);
     }
 }

@@ -4,9 +4,11 @@ using UnityEngine.EventSystems;
 
 public class CuttingCounter : BaseCounter, IHasProgress
 {
+    // when any cutting counter triggers a cut action 
+    public static event EventHandler OnAnyCut; // belong to the class
     // Event for the cutting bar UI to normalize the hits on the bar 
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-    public event EventHandler OnCut;
+    public event EventHandler OnCut; // not static (each counter has diffrent list of listners)
 
     [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
     
@@ -69,6 +71,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
             cuttingProgress++;
 
             OnCut?.Invoke(this, EventArgs.Empty);
+            OnAnyCut?.Invoke(this, EventArgs.Empty);
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
