@@ -6,14 +6,20 @@ public class CuttingCounter : BaseCounter, IHasProgress
 {
     // when any cutting counter triggers a cut action 
     public static event EventHandler OnAnyCut; // belong to the class
+
+    new public static void ResetStaticData()
+    {
+        OnAnyCut = null;
+    }
+
     // Event for the cutting bar UI to normalize the hits on the bar 
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
     public event EventHandler OnCut; // not static (each counter has diffrent list of listners)
 
     [SerializeField] private CuttingRecipeSO[] cuttingRecipeSOArray;
-    
+
     private int cuttingProgress;
-    
+
     public override void Interact(Player player)
     {
         if (!HasKitchenObject()) // Counter is Empty
@@ -26,7 +32,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
                     // Player carying somthing that can be Cut
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     cuttingProgress = 0;
-                    
+
                     CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
                     OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
@@ -71,6 +77,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
             cuttingProgress++;
 
             OnCut?.Invoke(this, EventArgs.Empty);
+            //Debug.Log(OnAnyCut.GetInvocationList().Length);
             OnAnyCut?.Invoke(this, EventArgs.Empty);
 
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
@@ -103,7 +110,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
     private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
     {
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
-        if(cuttingRecipeSO != null)
+        if (cuttingRecipeSO != null)
         {
             return cuttingRecipeSO.output;
         }
