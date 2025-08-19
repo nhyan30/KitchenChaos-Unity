@@ -13,7 +13,8 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
 
-        PlayerPrefs.SetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 1f);
+        // Default data is used if no saved data is on PlayerPrefs
+        volume = PlayerPrefs.GetFloat(PLAYER_PREFS_SOUND_EFFECTS_VOLUME, 1f);
     }
 
     private void Start()

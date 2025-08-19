@@ -12,6 +12,22 @@ public class OptionsUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI soundEffectText;
     [SerializeField] private TextMeshProUGUI musicText;
 
+    [SerializeField] private Button moveUpButton;
+    [SerializeField] private Button moveDownButton;
+    [SerializeField] private Button moveLeftButton;
+    [SerializeField] private Button moveRightButton;
+    [SerializeField] private Button interactButton;
+    [SerializeField] private Button interactAlternateButton;
+    [SerializeField] private Button pauseButton;
+
+    [SerializeField] private TextMeshProUGUI moveUpText;
+    [SerializeField] private TextMeshProUGUI moveDownText;
+    [SerializeField] private TextMeshProUGUI moveLeftText;
+    [SerializeField] private TextMeshProUGUI moveRightText;
+    [SerializeField] private TextMeshProUGUI interactText;
+    [SerializeField] private TextMeshProUGUI interactAlternateText;
+    [SerializeField] private TextMeshProUGUI pauseText;
+
     private void Awake()
     {
         Instance = this;
@@ -30,6 +46,10 @@ public class OptionsUI : MonoBehaviour
         closeButton.onClick.AddListener(() =>
         {
             Hide();
+        });
+        moveUpButton.onClick.AddListener(() =>
+        {
+            GameInput.Instance.RebindBinding(GameInput.Binding.Move_Up);
         });
     }
 
@@ -51,6 +71,14 @@ public class OptionsUI : MonoBehaviour
     {
         soundEffectText.text = "Sound Effects: " + Mathf.Round(SoundManager.Instance.GetVolume() * 10f);
         musicText.text = "Music: " + Mathf.Round(MusicManager.Instance.GetVolume() * 10f);
+
+        moveUpText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Up);
+        moveDownText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Down);
+        moveLeftText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Left);
+        moveRightText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Move_Right);
+        interactText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Interact);
+        interactAlternateText.text = GameInput.Instance.GetBindingText(GameInput.Binding.InteractAlternate);
+        pauseText.text = GameInput.Instance.GetBindingText(GameInput.Binding.Pause);
     }
 
     public void Show()
