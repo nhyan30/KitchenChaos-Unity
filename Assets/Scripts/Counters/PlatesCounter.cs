@@ -9,7 +9,7 @@ public class PlatesCounter : BaseCounter
     // to update the amount of Plates
     public event EventHandler OnPlateRemoved;
 
-    [SerializeField] KitchenObjectSO plateKitchenObjectSO;
+    [SerializeField] private KitchenObjectSO plateKitchenObjectSO;
 
     private float spawnPlateTimer;
     private float spawnPlateTimerMax = 4f;
@@ -21,8 +21,8 @@ public class PlatesCounter : BaseCounter
         spawnPlateTimer += Time.deltaTime;
         if (spawnPlateTimer > spawnPlateTimerMax)
         {
-            spawnPlateTimer = 0;
-            if (KitchenGameManager.Instance.IsGamePlaying() && platesSpawnAmount < spawnPlateTimerMax)
+            spawnPlateTimer = 0f;
+            if (KitchenGameManager.Instance.IsGamePlaying() && platesSpawnAmount < platesSpawnAmountMax)
             {
                 platesSpawnAmount++;
                 // fire event
