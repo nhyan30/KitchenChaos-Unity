@@ -14,28 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1755595518
+  lastShownTimestamp: 1755683820
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1755595518
+  checkedLastUpdateTimestamp: 1755683820
   lastQOTDResponse:
-    questionId: 212
-    questionText: 'What is the value stored in percentage?
-
-      <p>int health =
-      25;</p>
-
-      <p>int healthMax = 100;</p>
-
-      <p>float percentage = health
-      / healthMax;</p>'
-    answerA: 0.25f
-    answerB: 0
-    answerC: 2.5f
+    questionId: 213
+    questionText: What is the purpose of a namespace?
+    answerA: To confuse you
+    answerB: Better performance
+    answerC: Keep your code organized
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1755595518
+  lastQotdTimestamp: 1755683820
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/summer2025CodeMonkeyBundle_EndsSoon.png
     topText: All my Courses (and Games) in one Bundle! DEEP DISCOUNT ONLY THIS SUMMER!
@@ -43,11 +35,11 @@ MonoBehaviour:
     bottomText: Get my Code Monkey Toolkit and make games BETTER and FASTER! 50%
       OFF right now!
     bottomLink: toolkit
-  lastDynamicHeaderTimestamp: 1755595518
+  lastDynamicHeaderTimestamp: 1755683820
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1755595518
+  websiteLatestMessageTimestamp: 1755683820
   websiteLatestVideos:
     videos:
     - youTubeId: HZ48JOAf-Ko
@@ -58,4 +50,4 @@ MonoBehaviour:
       title: Unity 6.2 is HERE!
     - youTubeId: taWg92DaORw
       title: The 5 MUST HAVE Assets you NEED! (SALE ENDS SOON!)
-  websiteLatestVideosTimestamp: 1755595518
+  websiteLatestVideosTimestamp: 1755683820
