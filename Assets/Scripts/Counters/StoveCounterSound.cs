@@ -16,7 +16,7 @@ public class StoveCounterSound : MonoBehaviour
 
     private void Start()
     {
-        stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
+        stoveCounter.OnStateChangedFrying += StoveCounter_OnStateChangedFrying;
         stoveCounter.OnProgressChanged += StoveCounter_OnProgressChanged;
     }
 
@@ -26,7 +26,7 @@ public class StoveCounterSound : MonoBehaviour
         playWarningSound = stoveCounter.IsFried() && e.progressNormalized >= burnShowProgressAmount;
     }
 
-    private void StoveCounter_OnStateChanged(object sender, StoveCounter.OnStateChangedEventArgs e)
+    private void StoveCounter_OnStateChangedFrying(object sender, StoveCounter.OnStateChangedFryingEventArgs e)
     {
         bool playSound = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Fried;
         if (playSound) { audioSource.Play(); } 

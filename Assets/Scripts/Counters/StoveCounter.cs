@@ -6,8 +6,8 @@ using static CuttingCounter;
 public class StoveCounter : BaseCounter, IHasProgress
 {
     public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-    public event EventHandler<OnStateChangedEventArgs> OnStateChanged;
-    public class OnStateChangedEventArgs : EventArgs
+    public event EventHandler<OnStateChangedFryingEventArgs> OnStateChangedFrying;
+    public class OnStateChangedFryingEventArgs : EventArgs
     {
         public State state;
     }
@@ -63,7 +63,8 @@ public class StoveCounter : BaseCounter, IHasProgress
                         burningRecipeSO = GetBurningRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
                         // fire the Event ,passes the state
-                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs { 
+                        OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
+                        { 
                             state = state
                         });
                     }
@@ -87,7 +88,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                         state = State.Burned;
 
                         // fire the Event ,passes the state
-                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                         {
                             state = state
                         });
@@ -122,7 +123,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                     fryingTimer = 0f;
 
                     // fire the Event ,passes the state
-                    OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                    OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                     {
                         state = state
                     });
@@ -154,7 +155,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                         state = State.Idle;
 
                         // fire the Event ,passes the state
-                        OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                        OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                         {
                             state = state
                         });
@@ -174,7 +175,7 @@ public class StoveCounter : BaseCounter, IHasProgress
                 state = State.Idle;
 
                 // fire the Event ,passes the state
-                OnStateChanged?.Invoke(this, new OnStateChangedEventArgs
+                OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                 {
                     state = state
                 });

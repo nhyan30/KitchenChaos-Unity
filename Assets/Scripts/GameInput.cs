@@ -36,7 +36,6 @@ public class GameInput : MonoBehaviour
         Instance = this;
 
         playerInputActions = new PlayerInputActions();
-        
         if (PlayerPrefs.HasKey(PLAYER_PREFS_BINDINGS))
         {
             playerInputActions.LoadBindingOverridesFromJson(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
@@ -47,6 +46,9 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
         playerInputActions.Player.Pause.performed += Pause_performed;
+
+
+        Debug.Log(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
 
         // Debug.Log(GetBindingText(Binding.Move_Up));
     }
@@ -102,7 +104,7 @@ public class GameInput : MonoBehaviour
             case Binding.InteractAlternate:
                 return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
             case Binding.Pause:
-                return playerInputActions.Player.Pause.bindings[0].ToDisplayString();
+                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().Substring(0,3);
         }
         // In input map we defined the keyboard binding on index 0
         // TODO add a gampad bindings

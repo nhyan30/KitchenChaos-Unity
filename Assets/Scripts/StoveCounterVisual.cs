@@ -10,10 +10,10 @@ public class StoveCounterVisual : MonoBehaviour
     private void Start()
     {
         // Listen to the event
-        stoveCounter.OnStateChanged += StoveCounter_OnStateChanged;
+        stoveCounter.OnStateChangedFrying += StoveCounter_OnStateChanged;
     }
 
-    private void StoveCounter_OnStateChanged(object sender, StoveCounter.OnStateChangedEventArgs e)
+    private void StoveCounter_OnStateChanged(object sender, StoveCounter.OnStateChangedFryingEventArgs e)
     {
         bool showVisual = e.state == StoveCounter.State.Frying || e.state == StoveCounter.State.Fried;
         stoveGameObject.SetActive(showVisual);
