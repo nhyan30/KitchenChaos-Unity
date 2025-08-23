@@ -14,20 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1755770417
+  lastShownTimestamp: 1755943936
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1755770417
+  checkedLastUpdateTimestamp: 1755943936
   lastQOTDResponse:
-    questionId: 213
-    questionText: What is the purpose of a namespace?
-    answerA: To confuse you
-    answerB: Better performance
-    answerC: Keep your code organized
+    questionId: 214
+    questionText: 'What is the position of the transform after running this code?
+
+      <p>Vector3
+      targetPosition = new Vector3(10, 0, 0);</p>
+
+      <p>transform.position =
+      targetPosition;</p>
+
+      <p>targetPosition.x = 20;</p>'
+    answerA: (10, 0, 0)
+    answerB: (20, 0, 0)
+    answerC: Unknown
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1755770417
+  lastQotdTimestamp: 1755943936
   lastDynamicHeaderResponse:
     topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/summer2025CodeMonkeyBundle_EndsSoon.png
     topText: All my Courses (and Games) in one Bundle! DEEP DISCOUNT ONLY THIS SUMMER!
@@ -35,19 +43,19 @@ MonoBehaviour:
     bottomText: Get my Code Monkey Toolkit and make games BETTER and FASTER! 50%
       OFF right now!
     bottomLink: toolkit
-  lastDynamicHeaderTimestamp: 1755770417
+  lastDynamicHeaderTimestamp: 1755943936
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1755770417
+  websiteLatestMessageTimestamp: 1755943936
   websiteLatestVideos:
     videos:
+    - youTubeId: Lgmv7PYKka8
+      title: Does this AI FINALLY replace Game Devs? Should YOU worry?
     - youTubeId: x4BTbeKinSI
       title: TOP 10 FREE NEW Assets AUGUST 2025!
     - youTubeId: HZ48JOAf-Ko
       title: Did I STOP making TUTORIALS?
     - youTubeId: XJsidUVPOCY
       title: TOP 10 NEW Games, Made with Unity! (JULY 2025)
-    - youTubeId: CZ5rsOwgcl4
-      title: Unity 6.2 is HERE!
-  websiteLatestVideosTimestamp: 1755770417
+  websiteLatestVideosTimestamp: 1755943936

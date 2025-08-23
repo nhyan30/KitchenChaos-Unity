@@ -89,12 +89,15 @@ public class CuttingCounter : BaseCounter, IHasProgress
 
             if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
             {
-                KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
+                KitchenObjectSO[] outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
 
                 //if(cuttingProgress == CuttingRecipeSO.cuttingProgressMax)
                 GetKitchenObject().DestroySelf();
 
-                KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
+                foreach (KitchenObjectSO obj in outputKitchenObjectSO)
+                {
+                    KitchenObject.SpawnKitchenObject(obj, this);
+                }
             }
         }
     }
@@ -107,7 +110,7 @@ public class CuttingCounter : BaseCounter, IHasProgress
         return cuttingRecipeSO != null;
     }
 
-    private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
+    private KitchenObjectSO[] GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
     {
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
         if (cuttingRecipeSO != null)
@@ -124,9 +127,12 @@ public class CuttingCounter : BaseCounter, IHasProgress
     {
         foreach (CuttingRecipeSO cuttingRecipeSO in cuttingRecipeSOArray)
         {
-            if (cuttingRecipeSO.input == inputKitchenObjectSO)
+            foreach(KitchenObjectSO kitchenObjectSO in cuttingRecipeSO.input)
             {
-                return cuttingRecipeSO;
+                if (kitchenObjectSO == inputKitchenObjectSO)
+                {
+                    return cuttingRecipeSO;
+                }
             }
         }
         return null;

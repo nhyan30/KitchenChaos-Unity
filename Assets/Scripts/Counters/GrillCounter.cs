@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 
-public class GrillCounter : BaseCounter/*, IHasProgress*/
+public class GrillCounter : BaseCounter, IHasProgress
 {
-    //public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
-    public event EventHandler<OnStateChangedGrillingEventArgs> OnStateChangedGrilling;
-    public class OnStateChangedGrillingEventArgs : EventArgs
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+    public event EventHandler<OnStateChangedFryingEventArgs> OnStateChangedFrying;
+    public class OnStateChangedFryingEventArgs : EventArgs
     {
         public State state;
     }
@@ -38,10 +38,10 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
                 case State.Grilling:
                     grillingTimer += Time.deltaTime;
 
-                    //OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                    //{
-                    //    progressNormalized = grillingTimer / grillingRecipeSO.grillingTimerMax
-                    //});
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = grillingTimer / grillingRecipeSO.grillingTimerMax
+                    });
 
                     if (grillingTimer > grillingRecipeSO.grillingTimerMax)
                     {
@@ -53,18 +53,23 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
                         // Object Fried
 
                         state = State.Grilled;
-                        
+
                         // fire the Event ,passes the state
-                        OnStateChangedGrilling?.Invoke(this, new OnStateChangedGrillingEventArgs
+                        OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                         {
                             state = state
+                        });
+
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
                         });
                     }
                     break;
                 case State.Grilled:
                     break;
             }
-            //Debug.Log(state);
+            // Debug.Log(state);
         }
     }
 
@@ -77,7 +82,7 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
             {
                 if (HasRecipeWithInput(player.GetKitchenObject().GetKitchenObjectSO()))
                 {
-                    // Player carying somthing that can be Burned
+                    // Player carying somthing that can be Fried
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     grillingRecipeSO = GetGrillingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
 
@@ -85,15 +90,15 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
                     grillingTimer = 0f;
 
                     // fire the Event ,passes the state
-                    OnStateChangedGrilling?.Invoke(this, new OnStateChangedGrillingEventArgs
+                    OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                     {
                         state = state
                     });
 
-                    //OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                    //{
-                    //    progressNormalized = grillingTimer / grillingRecipeSO.grillingTimerMax
-                    //});
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                    {
+                        progressNormalized = grillingTimer / grillingRecipeSO.grillingTimerMax
+                    });
                 }
             }
             else
@@ -117,15 +122,15 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
                         state = State.Idle;
 
                         // fire the Event ,passes the state
-                        OnStateChangedGrilling?.Invoke(this, new OnStateChangedGrillingEventArgs
+                        OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                         {
                             state = state
                         });
 
-                        //OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                        //{
-                        //    progressNormalized = 0f
-                        //});
+                        OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                        {
+                            progressNormalized = 0f
+                        });
                     }
                 }
             }
@@ -137,15 +142,15 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
                 state = State.Idle;
 
                 // fire the Event ,passes the state
-                OnStateChangedGrilling?.Invoke(this, new OnStateChangedGrillingEventArgs
+                OnStateChangedFrying?.Invoke(this, new OnStateChangedFryingEventArgs
                 {
                     state = state
                 });
 
-                //OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
-                //{
-                //    progressNormalized = 0f
-                //});
+                OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
+                {
+                    progressNormalized = 0f
+                });
             }
         }
     }
@@ -157,26 +162,13 @@ public class GrillCounter : BaseCounter/*, IHasProgress*/
         return grillingRecipeSO != null;
     }
 
-    private KitchenObjectSO GetOutputForInput(KitchenObjectSO inputKitchenObjectSO)
-    {
-        GrillingRecipeSO cuttingRecipeSO = GetGrillingRecipeSOWithInput(inputKitchenObjectSO);
-        if (cuttingRecipeSO != null)
-        {
-            return cuttingRecipeSO.output;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
     private GrillingRecipeSO GetGrillingRecipeSOWithInput(KitchenObjectSO inputKitchenObjectSO)
     {
         foreach (GrillingRecipeSO grillingRecipeSO in grillingRecipeSOArray)
         {
             if (grillingRecipeSO.input == inputKitchenObjectSO)
             {
-                return this.grillingRecipeSO;
+                return grillingRecipeSO;
             }
         }
         return null;

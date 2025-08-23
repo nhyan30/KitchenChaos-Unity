@@ -36,6 +36,8 @@ Transform:
   - {fileID: 3550707550894988254}
   - {fileID: 3550707552397226384}
   - {fileID: 3611271270719445376}
+  - {fileID: 4957784310297652664}
+  - {fileID: 1766428138216515541}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5443550173068257395
@@ -50,6 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b41c5e97cd7db2b4eac862614b112ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plateKitchenObject: {fileID: 0}
+  KitchenObjectGameObjectList: []
 --- !u!1001 &408889405707390302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -477,4 +481,128 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3812876574508226176, guid: 0df961a7e3870b44f9bbce7bdf930613, type: 3}
   m_PrefabInstance: {fileID: 502115200686018304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2102960813121295089
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 408889407006782756}
+    m_Modifications:
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.1114
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782757, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+      propertyPath: m_Name
+      value: GrilledMeatOnSkewer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+--- !u!4 &1766428138216515541 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 408889407006782756, guid: 3faeabe79bc862841b1f979314b7151e, type: 3}
+  m_PrefabInstance: {fileID: 2102960813121295089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4711112861009893532
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 408889407006782756}
+    m_Modifications:
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.114
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408889407006782757, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+      propertyPath: m_Name
+      value: GrilledMeatTomatoOnSkewer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+--- !u!4 &4957784310297652664 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 408889407006782756, guid: 18562ba5a9fe180468759f98b5e58cf7, type: 3}
+  m_PrefabInstance: {fileID: 4711112861009893532}
   m_PrefabAsset: {fileID: 0}

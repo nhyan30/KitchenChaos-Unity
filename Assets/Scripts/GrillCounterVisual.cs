@@ -9,12 +9,12 @@ public class GrillCounterVisual : MonoBehaviour
     private void Start()
     {
         // Listen to the event
-        grillCounter.OnStateChangedGrilling += GrillCounter_OnStateChanged;
+        grillCounter.OnStateChangedFrying += GrillCounter_OnStateChanged;
     }
 
-    private void GrillCounter_OnStateChanged(object sender, GrillCounter.OnStateChangedGrillingEventArgs e)
+    private void GrillCounter_OnStateChanged(object sender, GrillCounter.OnStateChangedFryingEventArgs e)
     {
-        bool showVisual = e.state == GrillCounter.State.Grilling || e.state == GrillCounter.State.Grilled;
+        bool showVisual = e.state == GrillCounter.State.Grilling;
         stoveGameObject.SetActive(showVisual);
         particlesGameObject.SetActive(showVisual);
     }

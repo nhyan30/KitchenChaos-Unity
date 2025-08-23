@@ -213,9 +213,9 @@ public class StoveCounter : BaseCounter, IHasProgress
         foreach (FryingRecipeSO fryingRecipeSO in fryingRecipeSOArray)
         {
             if (fryingRecipeSO.input == inputKitchenObjectSO)
-            {
-                return fryingRecipeSO;
-            }
+                {
+                    return fryingRecipeSO;
+                }
         }
         return null;
     }

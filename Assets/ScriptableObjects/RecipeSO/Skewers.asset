@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Skewers
   m_EditorClassIdentifier: 
   kitchenObjectSOList:
-  - {fileID: 11400000, guid: 459018c170b96cd449e405fae591a33c, type: 2}
-  - {fileID: 11400000, guid: 7948aa875d0c4cc468e83d30001b6bb3, type: 2}
+  - {fileID: 11400000, guid: 0edfe2ff116fc5f40aa1941b955bc2c5, type: 2}
   recipeName: Skewers

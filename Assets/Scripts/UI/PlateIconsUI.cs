@@ -1,5 +1,6 @@
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlateIconsUI : MonoBehaviour
 {
@@ -29,9 +30,12 @@ public class PlateIconsUI : MonoBehaviour
         }
         foreach (KitchenObjectSO kitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
         {
-            Transform iconTransfrom = Instantiate(iconTemplate, transform); // transform to make it spawn properly, if null it will spwan globally 
-            iconTransfrom.gameObject.SetActive(true);
-            iconTransfrom.GetComponent<PlateIconSingleUI>().SetKitchenObjectSO(kitchenObjectSO);
+            foreach (Sprite sprite in kitchenObjectSO.sprite)
+            {
+                Transform iconTransform = Instantiate(iconTemplate, transform);
+                iconTransform.gameObject.SetActive(true);
+                iconTransform.GetComponent<PlateIconSingleUI>().SetSprite(sprite);
+            }
         }
         //Debug.Log(iconTemplate.name);
     }

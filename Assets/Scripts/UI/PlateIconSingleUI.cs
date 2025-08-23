@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,8 +6,8 @@ public class PlateIconSingleUI : MonoBehaviour
 {
     [SerializeField] private Image image;
 
-    public void SetKitchenObjectSO(KitchenObjectSO kitchenObjectSO)
+    public void SetSprite(Sprite sprite)
     {
-        image.sprite = kitchenObjectSO.sprite;
+        image.sprite = sprite;
     }
 }

@@ -22,11 +22,17 @@ public class DeliveryManagerSingleUI : MonoBehaviour
             if(child == iconTemplate) continue;
             Destroy(child.gameObject);
         }
+
         foreach (KitchenObjectSO kitchenObjectSO in recipeSO.kitchenObjectSOList)
         {
-            Transform iconTransform = Instantiate(iconTemplate, iconContainer);
-            iconTransform.gameObject.SetActive(true);
-            iconTransform.GetComponent<Image>().sprite = kitchenObjectSO.sprite;
+            foreach (Sprite sprite in kitchenObjectSO.sprite)
+            {
+                Transform iconTransform = Instantiate(iconTemplate, iconContainer);
+                iconTransform.gameObject.SetActive(true);
+
+                Image iconImage = iconTransform.GetComponent<Image>();
+                iconImage.sprite = sprite;
+            }
         }
     }
 }
