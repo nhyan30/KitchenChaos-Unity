@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
+
 
 public class Player : MonoBehaviour, IKitchenObjectParent
 {
@@ -17,15 +15,22 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         public BaseCounter selectedCounter;
     }
 
+    private float rotationSpeed = 10f;
+    private float playerRadius = .7f;
+    private float playerHeight = 2f;
+
     [SerializeField] private float moveSpeed = 10f;
+    [SerializeField] private float dashDistance = 5f;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private LayerMask countersLayerMask;
     [SerializeField] private Transform kitchenObjectHoldPoint;
 
     private bool isWalking;
+    private bool canDash = true;
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
+
     private void Awake()
     {
         if (Instance != null)
@@ -39,6 +44,15 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         gameInput.OnInteractAction += GameInput_OnInteractAction;
         gameInput.OnInteractAlternateAction += GameInput_OnInteractAlternateAction;
+        gameInput.OnDashAction += GameInput_OnDashAction;
+    }
+
+    private void GameInput_OnDashAction(object sender, EventArgs e)
+    {
+        if (!KitchenGameManager.Instance.IsGamePlaying()) return;
+        if (!canDash) return;
+
+        StartCoroutine(Dash());
     }
 
     private void GameInput_OnInteractAlternateAction(object sender, EventArgs e)
@@ -107,11 +121,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         Vector3 inputVector = gameInput.GetMovementVectorNormalized();
         float moveDistance = Time.deltaTime * moveSpeed;
-        float rotationSpeed = 10f;
-        float playerRadius = .7f;
-        float playerHeight = 2f;
 
-        bool canMove = !Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, inputVector, moveDistance);
+        bool canMove = CanMoveDirection(inputVector, moveDistance);
         if (!canMove)
         {
             // Cannot move towards movement
@@ -188,6 +199,40 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         return kitchenObject != null;
     }
 
-    // TODO (Not needed - only if the instance is destroyed)
-    // Unsubscribe from the event when the object is destroyed to avoid memory leaks
+    private IEnumerator Dash()
+    {
+        canDash = false;
+
+        Vector3 dashDir = transform.forward;
+        float dashTime = 0.1f; // how long the dash lasts
+        float moveDistance = Time.deltaTime * moveSpeed;
+        float elapsed = 0f;
+
+        while (elapsed < dashTime)
+        {
+            if (CanMoveDirection(dashDir, moveDistance)) 
+            { 
+                transform.position += dashDir * moveDistance; 
+            }
+            // Hit something, stop dash immediately
+            else { break; }
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1);
+        canDash = true;
+    }
+
+    private bool CanMoveDirection(Vector3 direction, float distance)
+    {
+        return !Physics.CapsuleCast(
+            transform.position,
+            transform.position + Vector3.up * playerHeight,
+            playerRadius,
+            direction,
+            distance
+        );
+    }
 }

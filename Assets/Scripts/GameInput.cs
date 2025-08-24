@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
@@ -13,6 +12,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnInteractAlternateAction;
     public event EventHandler OnPuaseAction;
     public event EventHandler OnBindingRebind;
+    public event EventHandler OnDashAction;
 
     public enum Binding
     {
@@ -46,6 +46,7 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed += Interact_performed;
         playerInputActions.Player.InteractAlternate.performed += InteractAlternate_performed;
         playerInputActions.Player.Pause.performed += Pause_performed;
+        playerInputActions.Player.Dash.performed += Dash_performed;
 
 
         Debug.Log(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
@@ -58,8 +59,14 @@ public class GameInput : MonoBehaviour
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
         playerInputActions.Player.Pause.performed -= Pause_performed;
+        playerInputActions.Player.Dash.performed -= Dash_performed;
 
         playerInputActions.Dispose(); // clean up the object and free up any memory 
+    }
+
+    private void Dash_performed(InputAction.CallbackContext obj)
+    {
+        OnDashAction?.Invoke(this, EventArgs.Empty);
     }
 
     private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

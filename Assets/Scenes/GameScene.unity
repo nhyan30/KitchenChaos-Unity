@@ -7130,6 +7130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  dashDistance: 25
   gameInput: {fileID: 1804411627}
   countersLayerMask:
     serializedVersion: 2
