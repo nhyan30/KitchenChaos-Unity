@@ -30,6 +30,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     private Vector3 lastInteractDir;
     private BaseCounter selectedCounter;
     private KitchenObject kitchenObject;
+    public GameObject dashingParticleSystem;
 
     private void Awake()
     {
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour, IKitchenObjectParent
             Debug.LogError("There is more than one Player instance");
         }
         Instance = this;
+
+        dashingParticleSystem.SetActive(false);
     }
 
     private void Start()
@@ -203,16 +206,18 @@ public class Player : MonoBehaviour, IKitchenObjectParent
     {
         canDash = false;
 
-        Vector3 dashDir = transform.forward;
+
+        Vector3 inputVector = gameInput.GetMovementVectorNormalized();
         float dashTime = 0.1f; // how long the dash lasts
         float moveDistance = Time.deltaTime * moveSpeed;
         float elapsed = 0f;
 
         while (elapsed < dashTime)
         {
-            if (CanMoveDirection(dashDir, moveDistance)) 
+            if (CanMoveDirection(inputVector, moveDistance)) 
             { 
-                transform.position += dashDir * moveDistance; 
+                transform.position += inputVector * moveDistance;
+                dashingParticleSystem.SetActive(true);
             }
             // Hit something, stop dash immediately
             else { break; }
@@ -222,6 +227,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         }
 
         yield return new WaitForSeconds(1);
+        dashingParticleSystem.SetActive(false);
         canDash = true;
     }
 

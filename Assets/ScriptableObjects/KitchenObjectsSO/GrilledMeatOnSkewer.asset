@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 2875629209381597738, guid: 0e33a0b2063b0ec4bbb3ed121692d685, type: 3}
   sprite:
-  - {fileID: 21300000, guid: 713ea9afa60dd6e4ebf6503a33e8cc99, type: 3}
+  - {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
   - {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
   objectName: GrilledMeatOnSkewer

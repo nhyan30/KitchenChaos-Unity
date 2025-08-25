@@ -54,7 +54,7 @@ public class GameInput : MonoBehaviour
         // Debug.Log(GetBindingText(Binding.Move_Up));
     }
 
-    private void OnDestroy() 
+    private void OnDestroy()
     {
         playerInputActions.Player.Interact.performed -= Interact_performed;
         playerInputActions.Player.InteractAlternate.performed -= InteractAlternate_performed;
@@ -100,18 +100,18 @@ public class GameInput : MonoBehaviour
             default:
             case Binding.Move_Up:
                 return playerInputActions.Player.Move.bindings[1].ToDisplayString();
-            case Binding.Move_Down:                 
+            case Binding.Move_Down:
                 return playerInputActions.Player.Move.bindings[2].ToDisplayString();
-            case Binding.Move_Left:                               
+            case Binding.Move_Left:
                 return playerInputActions.Player.Move.bindings[3].ToDisplayString();
-            case Binding.Move_Right:                               
+            case Binding.Move_Right:
                 return playerInputActions.Player.Move.bindings[4].ToDisplayString();
             case Binding.Interact:
                 return playerInputActions.Player.Interact.bindings[0].ToDisplayString();
             case Binding.InteractAlternate:
                 return playerInputActions.Player.InteractAlternate.bindings[0].ToDisplayString();
             case Binding.Pause:
-                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().Substring(0,3);
+                return playerInputActions.Player.Pause.bindings[0].ToDisplayString().Substring(0, 3);
         }
         // In input map we defined the keyboard binding on index 0
         // TODO add a gampad bindings
@@ -126,7 +126,7 @@ public class GameInput : MonoBehaviour
 
         switch (binding)
         {
-            default :
+            default:
             case Binding.Move_Up:
                 inputAction = playerInputActions.Player.Move;
                 bindingIndex = 1;
@@ -145,7 +145,7 @@ public class GameInput : MonoBehaviour
                 break;
             case Binding.Interact:
                 inputAction = playerInputActions.Player.Interact;
-                bindingIndex =  0;
+                bindingIndex = 0;
                 break;
             case Binding.InteractAlternate:
                 inputAction = playerInputActions.Player.InteractAlternate;
@@ -164,7 +164,7 @@ public class GameInput : MonoBehaviour
             callback.Dispose(); // clearing the old binding memory 
             playerInputActions.Player.Enable();
             onActionRebound();
-            
+
             // store the rebinding keys 
             PlayerPrefs.SetString(PLAYER_PREFS_BINDINGS, playerInputActions.SaveBindingOverridesAsJson());
             PlayerPrefs.Save();
