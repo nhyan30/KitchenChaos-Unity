@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d02b1ae351f9df64b8b84b0402cb3738, type: 3}
   m_Name: GrilledMeat
   m_EditorClassIdentifier: 
-  prefab: {fileID: 2875629209381597738, guid: 4cc93223d4a029b42addc80bc9dcfd02, type: 3}
+  prefab: {fileID: 2875629209381597738, guid: 2e2bc4e43b5a44f4d84c4101cd062b17, type: 3}
   sprite:
   - {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
   objectName: Grilled Meat

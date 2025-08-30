@@ -14,48 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentVersion: 1.01
   subtype: kitchenchaos
-  lastShownTimestamp: 1756120101
+  lastShownTimestamp: 1756545012
   lastUpdateResponse:
     version: 1.01
     versionUrl: https://unitycodemonkey.com
-  checkedLastUpdateTimestamp: 1756120101
+  checkedLastUpdateTimestamp: 1756545012
   lastQOTDResponse:
-    questionId: 214
-    questionText: 'What is the position of the transform after running this code?
-
-      <p>Vector3
-      targetPosition = new Vector3(10, 0, 0);</p>
-
-      <p>transform.position =
-      targetPosition;</p>
-
-      <p>targetPosition.x = 20;</p>'
-    answerA: (10, 0, 0)
-    answerB: (20, 0, 0)
-    answerC: Unknown
+    questionId: 216
+    questionText: What is the purpose of Unity Hub?
+    answerA: Provide a space for the community to interact
+    answerB: Manage different Unity versions and Projects
+    answerC: Dashboard for Unity services
     answerD: 
     answerE: 
-  lastQotdTimestamp: 1756120101
+  lastQotdTimestamp: 1756545012
   lastDynamicHeaderResponse:
-    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/summer2025CodeMonkeyBundle_EndsTomorrow.png
-    topText: All my Courses (and Games) in one Bundle! DEEP DISCOUNT ENDS TOMORROW!
-    topLink: summer2025bundle
-    bottomText: Get my Code Monkey Toolkit and make games BETTER and FASTER! 50%
-      OFF right now!
-    bottomLink: toolkit
-  lastDynamicHeaderTimestamp: 1756120101
+    topImageUrl: https://codemonkeyexternal.blob.core.windows.net/external/Misc/humbleBundleAug25RealisticEnv.png
+    topText: AWESOME Realistic Environments 99% OFF!
+    topLink: humblebundle
+    bottomText: My 10+ Years of C# Knowledge in 1 Course!
+    bottomLink: csharpcourse
+  lastDynamicHeaderTimestamp: 1756545012
   websiteLatestMessage:
     text: <a href="https://cmonkey.co/freecourses">Check out all my FREE courses!
       Click here!</a>
-  websiteLatestMessageTimestamp: 1756120101
+  websiteLatestMessageTimestamp: 1756545012
   websiteLatestVideos:
     videos:
+    - youTubeId: JZHByNNQb3I
+      title: 8 QUICK Success and Marketing Tips you NEED to know!
+    - youTubeId: FrKLJ1nCsxY
+      title: Indie Dev makes $4 MILLION... then goes broke!
+    - youTubeId: _fymNH4flZE
+      title: TOP 10 NEW Systems and Tools AUGUST 2025! | Unity Asset Store
     - youTubeId: YCvh88Hg5m8
       title: TOP 8 QUICK Tips on Game Programming!
-    - youTubeId: Lgmv7PYKka8
-      title: Does this AI FINALLY replace Game Devs? Should YOU worry?
-    - youTubeId: x4BTbeKinSI
-      title: TOP 10 FREE NEW Assets AUGUST 2025!
-    - youTubeId: HZ48JOAf-Ko
-      title: Did I STOP making TUTORIALS?
-  websiteLatestVideosTimestamp: 1756120101
+  websiteLatestVideosTimestamp: 1756545012
