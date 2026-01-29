@@ -1,9 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private Button mainMenuButton;
+    [SerializeField] private Button playAgainButton;
+
+    private void Awake()
+    {
+        mainMenuButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.MainMenuScene);
+        });
+
+        playAgainButton.onClick.AddListener(() =>
+        {
+            Loader.Load(Loader.Scene.GameScene);
+        });
+    }
 
     private void Start()
     {
@@ -28,11 +45,11 @@ public class GameOverUI : MonoBehaviour
 
     private void Show()
     {
-        gameObject.SetActive(true);
+        KitchenGameManager.Instance.Fade(canvasGroup, true);
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        KitchenGameManager.Instance.Fade(canvasGroup, false);
     }
 }

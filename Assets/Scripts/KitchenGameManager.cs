@@ -1,6 +1,7 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Rendering;
+using UnityEngine.Events;
 
 public class KitchenGameManager : MonoBehaviour
 {
@@ -21,8 +22,8 @@ public class KitchenGameManager : MonoBehaviour
     private State state;
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer;
-    private float gamePlayingTimerMax = 90f;
-    private bool isGamePaused = false;
+    public float gamePlayingTimerMax = 90f;
+    public bool isGamePaused = false;
 
 
     private void Awake()
@@ -119,5 +120,20 @@ public class KitchenGameManager : MonoBehaviour
             OnGameUnpaused?.Invoke(this, EventArgs.Empty);
             Time.timeScale = 1f;
         }
+    }
+    public void Fade(CanvasGroup canvasGroup, bool visible, UnityAction callback = null)
+    {
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.DOFade(visible ? 1 : 0, 0.3f).SetEase(Ease.InOutQuad)
+            .OnComplete(() =>
+            {
+                if (visible)
+                {
+                    canvasGroup.blocksRaycasts = true;
+                    canvasGroup.interactable = true;
+                }
+                if (callback != null)
+                    DOVirtual.DelayedCall(0.1f, () => callback.Invoke());
+            });
     }
 }

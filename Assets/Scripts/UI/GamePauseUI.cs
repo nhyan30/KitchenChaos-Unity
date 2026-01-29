@@ -48,12 +48,15 @@ public class GamePauseUI : MonoBehaviour
     private void Show()
     {
         gameObject.SetActive(true);
+        //KitchenGameManager.Instance.Fade(canvasGroup, true);
 
         resumeButton.Select();
     }
 
     private void Hide()
     {
+        //KitchenGameManager.Instance.Fade(canvasGroup, true);
+
         gameObject.SetActive(false);
     }
 }

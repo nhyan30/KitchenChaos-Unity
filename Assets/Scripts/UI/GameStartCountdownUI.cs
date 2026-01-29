@@ -1,6 +1,6 @@
 using TMPro;
-using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameStartCountdownUI : MonoBehaviour
 {
@@ -57,6 +57,5 @@ public class GameStartCountdownUI : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
 }
 

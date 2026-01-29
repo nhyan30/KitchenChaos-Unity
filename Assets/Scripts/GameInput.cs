@@ -51,7 +51,7 @@ public class GameInput : MonoBehaviour
 
         Debug.Log(PlayerPrefs.GetString(PLAYER_PREFS_BINDINGS));
 
-        // Debug.Log(GetBindingText(Binding.Move_Up));
+        Debug.Log(GetBindingText(Binding.Move_Up));
     }
 
     private void OnDestroy()

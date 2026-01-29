@@ -14,6 +14,7 @@ public class TutorialUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI keyGamepadInteractAlternateText;
     [SerializeField] private TextMeshProUGUI keyGamepadPauseText;
 
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private void Start()
     {
@@ -50,10 +51,10 @@ public class TutorialUI : MonoBehaviour
 
     private void Show()
     {
-        gameObject.SetActive(true);
+        KitchenGameManager.Instance.Fade(canvasGroup, true);
     }
     private void Hide()
     {
-        gameObject.SetActive(false);
+        KitchenGameManager.Instance.Fade(canvasGroup, false);
     }
 }
